@@ -10,6 +10,5 @@ public class Telephone {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String ddd;
     private String number;
 }

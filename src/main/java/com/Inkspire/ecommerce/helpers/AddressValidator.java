@@ -14,8 +14,6 @@ public class AddressValidator {
         for (Address address : addresses) {
             // Verifica se todos os campos obrigatórios estão preenchidos e não estão em branco
             if (address.getAddressType() == null ||
-                address.getResidenceType() == null || address.getResidenceType().trim().isEmpty() ||
-                address.getStreetType() == null || address.getStreetType().trim().isEmpty() ||
                 address.getStreet() == null || address.getStreet().trim().isEmpty() ||
                 address.getNumber() == null || address.getNumber().trim().isEmpty() ||
                 address.getNeighborhood() == null || address.getNeighborhood().trim().isEmpty() ||

@@ -57,6 +57,7 @@ public class UserService {
         user.setPassword(encryptedPassword);
         user.setCpf(userDTO.getCpf());
         user.setGender(userDTO.getGender());
+        user.setAtivo(userDTO.isAtivo());
         user.setBirthDate(userDTO.getBirthDate());
         user.setPhone(telephoneRepository.save(userDTO.getPhone()));
         user.setAddress(userDTO.getAddress().stream()
@@ -116,60 +117,4 @@ public class UserService {
         // Salva o usuário atualizado no banco de dados
         return userRepository.save(existingUser);
     }
-    
-
-    // private void validateUserFields(User user) {
-    //     // RN0012: Verifica se todos os campos obrigatórios estão preenchidos
-    //     if (user.getAddress() == null || user.getAddress().isEmpty()) {
-    //         throw new IllegalArgumentException("Endereço é obrigatório.");
-    //     }
-
-    //     // user.getBirthDate() == null ||
-    //     if (user.getGender() == null || user.getName() == null || 
-    //         user.getCpf() == null || user.getPhone() == null || user.getEmail() == null || 
-    //         user.getPassword() == null || user.getAddress().isEmpty()) {
-    //         throw new IllegalArgumentException("Todos os campos obrigatórios para o cadastro do cliente devem ser preenchidos.");
-    //     }
-
-    //     // RN0013: CPF e Data de Nascimento não podem ser alterados
-    //     if (user.getId() != null) {
-    //         Optional<User> existingUser = userRepository.findById(user.getId());
-    //         if (existingUser.isPresent()) {
-    //             User oldUser = existingUser.get();
-    //             if (!oldUser.getCpf().equals(user.getCpf())) {
-    //                 throw new IllegalArgumentException("O CPF não pode ser alterado.");
-    //             }
-    //             if (!oldUser.getBirthDate().equals(user.getBirthDate())) {
-    //                 throw new IllegalArgumentException("A data de nascimento não pode ser alterada.");
-    //             }
-    //         }
-    //     }
-    // }
-
-    // private void validateAddresses(List<Address> addresses) {
-    //     // RN0007 e RN0008: Verifica se ao menos um endereço de cobrança e de entrega foram cadastrados
-    //     boolean hasBillingAddress = addresses.stream()
-    //     .anyMatch(address -> address.getAddressType() == AddressType.BILLING);
-    //     boolean hasDeliveryAddress = addresses.stream()
-    //     .anyMatch(address -> address.getAddressType() == AddressType.DELIVERY);
-
-    //     if (!hasBillingAddress) {
-    //         throw new IllegalArgumentException("Deve haver ao menos um endereço de cobrança cadastrado.");
-    //     }
-
-    //     if (!hasDeliveryAddress) {
-    //         throw new IllegalArgumentException("Deve haver ao menos um endereço de entrega cadastrado.");
-    //     }
-
-    //     // RN0009: Verifica se todos os campos obrigatórios do endereço estão preenchidos
-    //     for (Address address : addresses) {
-    //         if (address.getResidenceType() == null || address.getStreetType() == null || 
-    //             address.getStreet() == null || address.getNumber() == null || 
-    //             address.getNeighborhood() == null || address.getPostalCode() == null || 
-    //             address.getCity() == null || address.getState() == null || 
-    //             address.getCountry() == null) {
-    //             throw new IllegalArgumentException("Todos os campos obrigatórios do endereço devem ser preenchidos.");
-    //         }
-    //     }
-    // }
 }

@@ -16,6 +16,7 @@ public class UserDTO {
     private String confirmPassword;
     private String cpf;
     private String gender;
+    private boolean ativo;
     private Date birthDate;
     private Telephone phone;
     private List<Address> address;

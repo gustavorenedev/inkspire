@@ -14,8 +14,6 @@ public class Address {
 
     @Enumerated(EnumType.STRING)
     private AddressType addressType;
-    private String residenceType;
-    private String streetType;
     private String street;
     private String number;
     private String neighborhood;
